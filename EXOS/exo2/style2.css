@@ -1,0 +1,47 @@
+:root{
+    font-size: 1em;
+    --back-color : #777;
+    --container-back-color : #ffff;
+    --btn-back-color:#feefa3;
+    --back-wite:#FFF;
+}
+
+*,*::after,*::before{
+    padding: 0;
+    margin: 0;
+    border: 0;
+    box-sizing: border-box;
+}
+
+.bodygris{
+    background-color: var(--back-color);
+}
+body{
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.mybtn{
+    padding: 15px 25px;
+    background-color:var(--btn-back-color) ;
+
+}
+#container{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50% ,-50%);
+    width: 200px;
+    height: 200px;
+    border: 1px solid black;
+    background-color: var(--container-back-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;  
+}
+
+#container.invisible{
+    display: none;
+}

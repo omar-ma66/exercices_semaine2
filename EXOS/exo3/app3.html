@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="style3.css" type="text/css" />
+  </head>
+  <body>
+   
+        <p>Appuyer sur les touches ctrl+k  pour voire le texte suivant</p>
+        <p>Appuyer sur les touches ctrl+alt+k pour changer la couleur </p>
+
+        <p id="idtexte1" class="invisible">voila le texte caché </p>
+
+   <script>
+const touchePress = {};
+
+
+const txt = document.querySelector("#idtexte1");
+    window.addEventListener("keydown",(even)=>{
+
+     if(even.ctrlKey && even.key === 'k')
+     {
+        even.preventDefault();
+        even.stopPropagation();
+            if(txt)
+            {
+                txt.classList.remove("invisible");
+            }
+     }
+      if(even.ctrlKey && even.altKey && even.key === 'k')
+     {
+        even.preventDefault();
+        even.stopPropagation();
+            if(txt)
+            {
+                txt.classList.remove("invisible");
+                txt.style.color ="#00FF00";
+            }
+     }
+
+
+    })
+   </script>
+  </body>
+</html>

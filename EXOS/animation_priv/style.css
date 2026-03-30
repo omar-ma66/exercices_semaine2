@@ -1,0 +1,47 @@
+:root{
+    --back-color : #777;
+    font-size: 1em;
+}
+
+body{
+    background-color: var(--back-color);
+    position: relative;
+    top: 0%;
+    left: 0;
+    height: 100vh;
+}
+
+#container{
+    position: relative;
+    top: 50%;
+    left: 50%;
+    height: 30px;
+    white-space: nowrap;
+    width: 100px;
+ overflow: hidden;
+    border: 1px solid black;
+}
+
+.boite{  
+    position: absolute;
+    top: 0;
+    left: 0;
+   
+animation-name: boite-move ;
+animation-duration: 6s;
+/* animation-timing-function: cubic-bezier(); */
+animation-timing-function: linear;
+animation-delay: 0ms;
+/* animation-direction: alternate; */
+animation-iteration-count: infinite;
+animation-fill-mode: forwards;
+
+}
+
+
+@keyframes boite-move {
+    0%{transform: translateX(0px);}
+    100%{
+        transform: translateX(-505px);
+    }
+}

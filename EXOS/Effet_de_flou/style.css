@@ -1,0 +1,22 @@
+ody {
+  display: flex;
+  justify-content: center;
+  padding: 3rem 0;
+}
+div {
+  position: relative;
+  overflow: hidden;
+  width: 300px;
+  height: 200px;
+  transform: scale(2,2) rotate(20deg);
+  transition: all 200ms ;
+}
+div img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  
+}
+div:hover{
+    filter: blur(3px);
+}

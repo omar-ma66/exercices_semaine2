@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="style1.css" type="text/css" />
+  </head>
+  <body>
+    <div id="container">
+      <div class="boite"></div>
+      <div class="boite"></div>
+      <div class="boite"></div>
+      <div class="boite"></div>
+      <div class="boite"></div>
+      <div class="boite"></div>
+      <div class="boite"></div>
+      <div class="boite"></div>
+      <div class="boite"></div>
+    </div>
+
+    <script>
+      const tableCouleurs = ["col1", "col2", "col3", "col4", "col5"];
+
+      const allBoites = document.querySelectorAll(".boite");
+
+      if (allBoites) {
+        for (let x = 0; x < allBoites.length; x++) {
+          allBoites[x].setAttribute("index", "0");
+        }
+      }
+
+      if (allBoites) {
+        for (let x = 0; x < allBoites.length; x++) {
+          allBoites[x].addEventListener("click", (element) => {
+            let index = parseInt(element.currentTarget.getAttribute("index"));
+
+            if (index == tableCouleurs.length) {
+              element.currentTarget.setAttribute("index", "0");
+              element.currentTarget.classList.remove(tableCouleurs[0]);
+            }
+
+            if (index < tableCouleurs.length) {
+              element.currentTarget.classList.add(tableCouleurs[index]);
+              element.currentTarget.setAttribute(
+                "index",
+                (index + 1).toString(),
+              );
+            }
+
+            if (index > 0)
+              element.currentTarget.classList.remove(tableCouleurs[index - 1]);
+          });
+        }
+      }
+    </script>
+  </body>
+</html>

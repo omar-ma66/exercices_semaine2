@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="style2.css" type="text/css" />
+  </head>
+  <body>
+    <div id="container" class="invisible">
+      <span>Voila votre texte</span>
+    </div>
+
+    <button class="mybtn">Changer</button>
+
+    <script>
+      const mybtn = document.querySelector(".mybtn");
+      const modal = document.querySelector("#container");
+
+      if (document.body) {
+        document.body.addEventListener("click", (element) => {
+          if (element.target === document.body) {
+            if (document.body.classList.contains("bodygris")) {
+              document.body.classList.remove("bodygris");
+              modal.classList.add("invisible");
+            }
+          }
+        });
+      }
+
+      if (mybtn) {
+        mybtn.addEventListener("click", (element) => {
+          if (modal) {
+            modal.classList.remove("invisible");
+            document.body.classList.add("bodygris");
+          }
+        });
+      }
+    </script>
+  </body>
+</html>

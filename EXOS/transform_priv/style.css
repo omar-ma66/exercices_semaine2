@@ -1,0 +1,20 @@
+
+body{
+    background-color: #777;
+}
+
+.container{
+    border: 1px solid black;
+    background-color: bisque;
+    width: 600px;
+    height: 200px;
+   
+    transform-origin: center center; 
+    transform: translateX(-580px)   ;
+    transition: all 3s;
+}
+
+.container:hover{
+    background-color: blueviolet;
+      transform: translateX(0px) ;
+}
