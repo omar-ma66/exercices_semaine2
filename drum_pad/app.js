@@ -7,7 +7,7 @@
 
 let register= false ;
 let play    = false ;
-const noteRegister = [];
+let noteRegister = [];
 
 document.body.addEventListener("keydown", (even) => {
   let touche = even.key.toUpperCase();
@@ -16,10 +16,9 @@ document.body.addEventListener("keydown", (even) => {
   if(touche == "R")
   {
     register = true ;
-        while(noteRegister.length>1)
-        {
-            noteRegister.pop();
-        }
+   
+
+        noteRegister  = noteRegister.splice(0,0);
   }
  else if(touche == "P")
   {
@@ -29,7 +28,7 @@ document.body.addEventListener("keydown", (even) => {
         obj.classList.add("playing");
         if (song) {song.play();}
         if( register)
-            noteRegister.push(touche);
+            noteRegister.push(song);
     }
 });
 
@@ -47,9 +46,23 @@ document.body.addEventListener("keyup", (even) => {
   }
 });
 
+
+ let index = 0;
+ let fini = false;
+function playsound()
+{
+  
+   console.log(` ${noteRegister[index].duration} `);
+noteRegister[index].play();
+
+      
+   
+}
+
+
 let songEnCours=false;
 
-function playsound() {
+function playsound_() {
     let index = 0 ;
     let song ;
 while(index < noteRegister.length )
