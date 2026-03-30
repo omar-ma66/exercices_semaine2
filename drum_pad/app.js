@@ -9,6 +9,8 @@ let register= false ;
 let play    = false ;
 let noteRegister = [];
 
+let player = document.querySelector("#player");
+
 document.body.addEventListener("keydown", (even) => {
   let touche = even.key.toUpperCase();
   const obj = document.querySelector(`div[data-key="${touche}"]`);
@@ -16,12 +18,11 @@ document.body.addEventListener("keydown", (even) => {
   if(touche == "R")
   {
     register = true ;
-   
-
         noteRegister  = noteRegister.splice(0,0);
   }
  else if(touche == "P")
   {
+    register = false;
     playsound();
   }
  else  if (obj) {
@@ -47,42 +48,28 @@ document.body.addEventListener("keyup", (even) => {
 });
 
 
- let index = 0;
- let fini = false;
+ 
+ 
 function playsound()
 {
-  
-   console.log(` ${noteRegister[index].duration} `);
-noteRegister[index].play();
+  let index = 0;
+     player.src = noteRegister[index].src;
+     player.play();
+     player.addEventListener('ended',(e)=>{
 
-      
+         index++  ;
+
+         if (index < noteRegister.length)
+            {
+                player.src = noteRegister[index].src;
+                player.play();
+            }
+        else
+            {
+                console.log("fin de la sequance");
+            }    
+
+     })
    
 }
 
-
-let songEnCours=false;
-
-function playsound_() {
-    let index = 0 ;
-    let song ;
-while(index < noteRegister.length )
-{ 
-    if (songEnCours == false)
-    {
- song=document.querySelector(`audio[data-key=${noteRegister[index]}]`);
-songEnCours = true ;
-song.play();
-console.log(song)
-    }
-    else
-    {
-        if( ! (song.currenTime > 0) )
-            {
-                songEnCours = false;
-                index++;
-            }
-    }
-}
- 
-}
-  
