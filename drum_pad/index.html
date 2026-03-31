@@ -1,80 +1,76 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Drum Pad</title>
-    <link rel="stylesheet" href="style.css" type="text/css">
+    <link rel="stylesheet" href="style.css" type="text/css" />
     <script defer async type="module" src="app.js"></script>
-</head>
-<body>
+  </head>
+  <body>
     <h1>DRUM PAD</h1>
-<div class="pad">
-  <div data-key="A" class="key keyA" >
-    <kbd>A</kbd>
-    <span class="sound">CLAP</span>
-  </div>
+    <div class="pad">
+      <div data-key="A" class="key keyA">
+        <kbd>A</kbd>
+        <span class="sound">CLAP</span>
+      </div>
 
-  <div data-key="Z" class="key keyZ">
-    <kbd>Z</kbd>
-    <span class="sound">HIHAT</span>
-  </div>
+      <div data-key="Z" class="key keyZ">
+        <kbd>Z</kbd>
+        <span class="sound">HIHAT</span>
+      </div>
 
-  <div data-key="E" class="key keyE">
-    <kbd>E</kbd>
-    <span class="sound">KCK</span>
-  </div>
+      <div data-key="E" class="key keyE">
+        <kbd>E</kbd>
+        <span class="sound">KCK</span>
+      </div>
 
-  <div data-key="Q" class="key keyQ">
-    <kbd>Q</kbd>
-    <span class="sound">OPENHAT</span>
-  </div>
+      <div data-key="Q" class="key keyQ">
+        <kbd>Q</kbd>
+        <span class="sound">OPENHAT</span>
+      </div>
 
-  <div data-key="S" class="key keyS">
-    <kbd>S</kbd>
-    <span class="sound">BOOM</span>
-  </div>
+      <div data-key="S" class="key keyS">
+        <kbd>S</kbd>
+        <span class="sound">BOOM</span>
+      </div>
 
-  <div data-key="D" class="key keyD">
-    <kbd>D</kbd>
-    <span class="sound">RIDE</span>
-  </div>
-<div data-key="W" class="key keyW">
-    <kbd>W</kbd>
-    <span class="sound">SNARE</span>
-  </div>
-  <div data-key="X" class="key keyX">
-    <kbd>X</kbd>
-    <span class="sound">TOM</span>
-  </div>
-  <div data-key="C" class="key keyC">
-    <kbd>C</kbd>
-    <span class="sound">TINK</span>
-  </div>
-  <div data-key="R" class="key keyR">
-    <kbd>R</kbd>
-    <span class="sound">Register</span>
-  </div>
-   <div data-key="P" class="key keyP">
-    <kbd>P</kbd>
-    <span class="sound">Play</span>
-  </div>
-  <!-- Générer les 8 boxes restantes correspondant aux fichiers audio à jouer -->
-</div>
-<!-- Audio source -->
-<audio data-key="A" class="audio-key-65" src="./audio/clap.wav"></audio>
-<audio data-key="Z" class="audio-key-90" src="./audio/hihat.wav"></audio>
-<audio data-key="E" class="audio-key-69" src="./audio/kick.wav"></audio>
-<audio data-key="Q" class="audio-key-81" src="./audio/openhat.wav"></audio>
-<audio data-key="S" class="audio-key-83" src="./audio/boom.wav"></audio>
-<audio data-key="D" class="audio-key-68" src="./audio/ride.wav"></audio>
-<audio data-key="W" class="audio-key-87" src="./audio/snare.wav"></audio>
-<audio data-key="X" class="audio-key-88" src="./audio/tom.wav"></audio>
-<audio data-key="C" class="audio-key-67" src="./audio/tink.wav"></audio>
+      <div data-key="D" class="key keyD">
+        <kbd>D</kbd>
+        <span class="sound">RIDE</span>
+      </div>
+      <div data-key="W" class="key keyW">
+        <kbd>W</kbd>
+        <span class="sound">SNARE</span>
+      </div>
+      <div data-key="X" class="key keyX">
+        <kbd>X</kbd>
+        <span class="sound">TOM</span>
+      </div>
+      <div data-key="C" class="key keyC">
+        <kbd>C</kbd>
+        <span class="sound">TINK</span>
+      </div>
+      <div data-key="R" class="key keyR">
+        <kbd>R</kbd>
+        <span class="sound">Register</span>
+      </div>
+      <div data-key="P" class="key keyP">
+        <kbd>P</kbd>
+        <span class="sound">Play</span>
+      </div>
+      <!-- Générer les 8 boxes restantes correspondant aux fichiers audio à jouer -->
+    </div>
+    <!-- Audio source -->
+    <audio data-key="A" class="audio-key-65" src="./audio/clap.wav"></audio>
+    <audio data-key="Z" class="audio-key-90" src="./audio/hihat.wav"></audio>
+    <audio data-key="E" class="audio-key-69" src="./audio/kick.wav"></audio>
+    <audio data-key="Q" class="audio-key-81" src="./audio/openhat.wav"></audio>
+    <audio data-key="S" class="audio-key-83" src="./audio/boom.wav"></audio>
+    <audio data-key="D" class="audio-key-68" src="./audio/ride.wav"></audio>
+    <audio data-key="W" class="audio-key-87" src="./audio/snare.wav"></audio>
+    <audio data-key="X" class="audio-key-88" src="./audio/tom.wav"></audio>
+    <audio data-key="C" class="audio-key-67" src="./audio/tink.wav"></audio>
 
-<audio id="player" >
-  <source src=""  type="audio/wav">
-</audio>
-
-</body>
+  </body>
 </html>

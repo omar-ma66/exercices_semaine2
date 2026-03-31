@@ -3,28 +3,50 @@
  *
  */
 
-let register = false;
-let play = false;
-let noteRegister = [];
+let isPlaying = false;
+let isRecording = false;
 
-let player = document.querySelector("#player");
+let startRecording;
+
+let playListObjet = {
+  key: "",
+  //   sound: "",
+  start: 0,
+  end: 0,
+  tempo: 0,
+  duration: 0,
+  //   startEnregistrement: 0,
+};
+let playListArray = [];
+let indexAudio = 0;
 
 document.body.addEventListener("keydown", (even) => {
-  let touche = even.key.toUpperCase();
-  const obj = document.querySelector(`div[data-key="${touche}"]`);
-  const song = document.querySelector(`audio[data-key="${touche}"]`);
-  if (touche == "R") {
-    register = true;
-    noteRegister = noteRegister.splice(0, 0);
-  } else if (touche == "P") {
-    register = false;
-    playsound();
-  } else if (obj) {
+  // debug even
+  console.log(even);
+
+  if (even.repeat) {
+    return;
+  }
+
+  let toucheAppuyer = even.key.toUpperCase();
+  const obj = document.querySelector(`div[data-key="${toucheAppuyer}"]`);
+  const song = document.querySelector(`audio[data-key="${toucheAppuyer}"]`);
+
+  if (toucheAppuyer == "R") {
+    recording(obj);
+  } else if (toucheAppuyer == "P") {
+    playing();
+  } else {
     obj.classList.add("playing");
-    if (song) {
-      song.play();
+    song.play();
+
+    if (isRecording) {
+      playListObjet["key"] = toucheAppuyer;
+      playListObjet["start"] = new Date().getTime();
+      playListObjet["tempo"] = new Date().getTime() - startRecording;
+      playListArray[indexAudio] = Object.assign({}, playListObjet);
+      indexAudio++;
     }
-    if (register) noteRegister.push(song);
   }
 });
 
@@ -34,25 +56,60 @@ document.body.addEventListener("keydown", (even) => {
  */
 
 document.body.addEventListener("keyup", (even) => {
-  let touche = even.key.toUpperCase();
-  const obj = document.querySelector(`div[data-key="${touche}"]`);
-  if (obj) {
+  let toucheRelache = even.key.toUpperCase();
+  if (toucheRelache != "R") {
+    const obj = document.querySelector(`div[data-key="${toucheRelache}"]`);
+
+    // playListArray[indexAudio]["end"] = new Date().getTime();
+    // indexAudio++;
+
     if (obj.classList.contains("playing")) obj.classList.remove("playing");
   }
 });
 
-function playsound() {
-  let index = 0;
-  player.src = noteRegister[index].src;
-  player.play();
-  player.addEventListener("ended", (e) => {
-    index++;
+function playSound(keyToPlay, duration, pressing) {
+  
+//   let eventKeyDown = new KeyboardEvent("keydown", { key: keyToPlay });
+//   document.body.dispatchEvent(eventKeyDown);
 
-    if (index < noteRegister.length) {
-      player.src = noteRegister[index].src;
-      player.play();
-    } else {
-      console.log("fin de la sequance");
-    }
-  });
+
+  setTimeout(() => {  
+  let eventKeyDown = new KeyboardEvent("keydown", { key: keyToPlay });
+  document.body.dispatchEvent(eventKeyDown);
+ }, duration);
+
+  setTimeout(() => {
+    let eventKeyUp = new KeyboardEvent("keyup", { key: keyToPlay });
+    document.body.dispatchEvent(eventKeyUp);
+  }, pressing);
+
+  // debug duration et keyToPlay
+  console.log(`${duration} : ${keyToPlay}`);
+}
+
+function recording(obj) {
+  isRecording = !isRecording;
+  startRecording = new Date().getTime();
+
+  if (isRecording) {
+    obj.classList.add("playing");
+    playListArray = [];
+    indexAudio = 0;
+  } else {
+    obj.classList.remove("playing");
+    console.log(playListArray);
+  }
+}
+
+function playing() {
+  // console.log(playListArray);
+
+  // playSound("E", 100);
+  // playSound("A", 100);
+  // playSound("Z", 100);
+
+  playListArray.forEach((objetAudio) => {
+    console.log(objetAudio.key, objetAudio.tempo); // debug
+            playSound(objetAudio.key, objetAudio.tempo, 500);
+        });
 }
