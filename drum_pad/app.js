@@ -68,15 +68,11 @@ document.body.addEventListener("keyup", (even) => {
 });
 
 function playSound(keyToPlay, duration, pressing) {
-  
-//   let eventKeyDown = new KeyboardEvent("keydown", { key: keyToPlay });
-//   document.body.dispatchEvent(eventKeyDown);
+  //   let eventKeyDown = new KeyboardEvent("keydown", { key: keyToPlay });
+  //   document.body.dispatchEvent(eventKeyDown);
 
-
-  setTimeout(() => {  
   let eventKeyDown = new KeyboardEvent("keydown", { key: keyToPlay });
   document.body.dispatchEvent(eventKeyDown);
- }, duration);
 
   setTimeout(() => {
     let eventKeyUp = new KeyboardEvent("keyup", { key: keyToPlay });
@@ -108,8 +104,10 @@ function playing() {
   // playSound("A", 100);
   // playSound("Z", 100);
 
-  playListArray.forEach((objetAudio) => {
-    console.log(objetAudio.key, objetAudio.tempo); // debug
-            playSound(objetAudio.key, objetAudio.tempo, 500);
-        });
+  playListArray.forEach((objetAudio, i) => {
+    setTimeout(() => {
+      console.log(objetAudio.key, objetAudio.tempo); // debug
+      playSound(objetAudio.key, objetAudio.tempo, 500);
+    }, 700 * i);
+  });
 }
